@@ -10,9 +10,9 @@ var output := Vector2.ZERO
 
 # JOYSTICK: To behave as a multiaxis joystick.
 # BUTTON: To behave as a press button.
-enum JoystickType {JOYSTICK, BUTTON}
+enum JoystickType {AXIS, BUTTON}
 
-export(JoystickType) var joystick_type := JoystickType.JOYSTICK
+export(JoystickType) var joystick_type := JoystickType.AXIS
 
 # ACTION_MODE_BUTTON_PRESS: Require just a press to consider the button clicked.
 # ACTION_MODE_BUTTON_RELEASE: Require a press and a subsequent release before considering the button clicked
@@ -55,8 +55,10 @@ enum VisibilityMode {ALWAYS , TOUCHSCREEN_ONLY }
 
 export(VisibilityMode) var visibility_mode := VisibilityMode.ALWAYS
 
-onready var _background := $MarginContainer/Background
-onready var _handle := $MarginContainer/Background/Handle
+onready var _movement_bounds = $MovementBounds
+onready var _detection_zone = $MovementBounds/DetectionZone
+onready var _background := $MovementBounds/DetectionZone/IdleZone/Background
+onready var _handle := $MovementBounds/DetectionZone/IdleZone/Background/Handle
 onready var _original_color : Color = _handle.self_modulate
 onready var _original_position : Vector2 = _background.rect_position
 
@@ -82,14 +84,14 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event is InputEventScreenTouch:
-		if _touch_started(event) and _is_inside_control_rect(event.position, self):
+		if _touch_started(event) and _is_inside_control_rect(event.position, _detection_zone):
 			if (joystick_mode == JoystickMode.DYNAMIC or joystick_mode == JoystickMode.FOLLOWING):
 				_center_control(_background, event.position)
 			if _is_inside_control_circle(event.position, _background):
 				_touch_index = event.index
 				_handle.self_modulate = _pressed_color
 				match joystick_type:
-					JoystickType.JOYSTICK:
+					JoystickType.AXIS:
 						_update_joystick(event.position)
 					JoystickType.BUTTON:
 						output = event.position
@@ -105,7 +107,7 @@ func _input(event: InputEvent) -> void:
 	
 	elif event is InputEventScreenDrag and _touch_index == event.index:
 		match joystick_type:
-			JoystickType.JOYSTICK:
+			JoystickType.AXIS:
 				_update_joystick(event.position)
 			JoystickType.BUTTON:
 				pass
