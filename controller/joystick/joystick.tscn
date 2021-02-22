@@ -1,8 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Joystick/Joystick.gd" type="Script" id=1]
-[ext_resource path="res://Joystick/joystick_background_cross.png" type="Texture" id=2]
-[ext_resource path="res://Joystick/joystick_handle.png" type="Texture" id=3]
+[ext_resource path="res://controller/joystick/joystick.gd" type="Script" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/joystick_background_cross.png-3d6aeebfdaf4d13a64f77c67b2dd3e0b.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/joystick_handle.png-ebbbcbcc9dce0e7b9cd1ca8dc0cb2f18.stex"
 
 [node name="Joystick" type="MarginContainer"]
 anchor_right = 1.0
@@ -17,8 +23,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-joystick_mode = 2
-clamp_zone = 0.75
 
 [node name="MovementBounds" type="NinePatchRect" parent="."]
 margin_left = -128.0
@@ -55,7 +59,7 @@ margin_right = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 128, 128 )
-texture = ExtResource( 2 )
+texture = SubResource( 1 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
@@ -75,7 +79,7 @@ grow_vertical = 2
 rect_pivot_offset = Vector2( 64, 64 )
 size_flags_horizontal = 5
 size_flags_vertical = 5
-texture = ExtResource( 3 )
+texture = SubResource( 2 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false

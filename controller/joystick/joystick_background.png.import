@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/joystick_background.png-150a73e760ae446d5ae74afd644aa417.stex"
+path="res://.import/joystick_background.png-0f5db34229c3f57ced1e9ec1a53e0066.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Joystick/joystick_background.png"
-dest_files=[ "res://.import/joystick_background.png-150a73e760ae446d5ae74afd644aa417.stex" ]
+source_file="res://controller/joystick/joystick_background.png"
+dest_files=[ "res://.import/joystick_background.png-0f5db34229c3f57ced1e9ec1a53e0066.stex" ]
 
 [params]
 

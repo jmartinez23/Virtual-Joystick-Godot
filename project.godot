@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "Joystick",
 "language": "GDScript",
-"path": "res://Joystick/Joystick.gd"
+"path": "res://controller/joystick/joystick.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",

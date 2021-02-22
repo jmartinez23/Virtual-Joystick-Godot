@@ -2,7 +2,10 @@
 
 [ext_resource path="res://Test/Player.gd" type="Script" id=1]
 [ext_resource path="res://Test/Arrow.png" type="Texture" id=2]
-[ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://controller/joystick/joystick.tscn" type="PackedScene" id=3]
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.1814, 23.4241 )
