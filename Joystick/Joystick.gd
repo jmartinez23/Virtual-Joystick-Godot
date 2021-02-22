@@ -55,8 +55,8 @@ enum VisibilityMode {ALWAYS , TOUCHSCREEN_ONLY }
 
 export(VisibilityMode) var visibility_mode := VisibilityMode.ALWAYS
 
-onready var _background := $Background
-onready var _handle := $Background/Handle
+onready var _background := $MarginContainer/Background
+onready var _handle := $MarginContainer/Background/Handle
 onready var _original_color : Color = _handle.self_modulate
 onready var _original_position : Vector2 = _background.rect_position
 

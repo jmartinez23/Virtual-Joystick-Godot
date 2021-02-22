@@ -4,27 +4,35 @@
 [ext_resource path="res://Joystick/joystick_background_cross.png" type="Texture" id=2]
 [ext_resource path="res://Joystick/joystick_handle.png" type="Texture" id=3]
 
-[node name="Joystick" type="Control"]
-anchor_top = 1.0
+[node name="Joystick" type="NinePatchRect"]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -300.0
-margin_right = 300.0
 rect_pivot_offset = Vector2( 150, 150 )
 mouse_filter = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+joystick_mode = 2
 
-[node name="Background" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -128.0
-margin_top = -128.0
-margin_right = 128.0
-margin_bottom = 128.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 154.0
+margin_top = -534.0
+margin_right = 474.0
+margin_bottom = -114.0
+grow_vertical = 0
+custom_constants/margin_left = 64
+custom_constants/margin_bottom = 64
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="MarginContainer"]
+margin_left = 64.0
+margin_right = 320.0
+margin_bottom = 356.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 128, 128 )
@@ -34,14 +42,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Handle" type="TextureRect" parent="Background"]
+[node name="Handle" type="TextureRect" parent="MarginContainer/Background"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 64, 64 )
+size_flags_horizontal = 5
+size_flags_vertical = 5
 texture = ExtResource( 3 )
 stretch_mode = 6
 __meta__ = {
